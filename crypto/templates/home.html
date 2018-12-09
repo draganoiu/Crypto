@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content%}
+
+
+<div class="jumbotron">
+
+  <h1 class="display-6"><strong>This is your Brain on Blockchain!</strong></h1>
+  <p class="lead">If you want to learn more about Blockchain please visit my youtube channel </p>
+  <hr class="my-1">
+  <a class="btn btn-outline-danger btn-lg btn-block" href="https://www.youtube.com/channel/UCvrkzhsp40Rmc3OiCL1xrTg?view_as=subscriber" role="button">Subscribe</a>
+ 
+</div>
+
+
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">24h High</th>
+      <th scope="col">24h Low</th>
+      <th scope="col">MarketCap</th>
+    </tr>
+  </thead>
+  <tbody>
+{%for key,value in api_price.DISPLAY.items%}
+
+
+
+
+    <tr>
+      <td>{{key}}</td>
+      <td>{{value.USD.PRICE}}</td>
+      <td>{{value.USD.HIGH24HOUR}}</td>
+      <td>{{value.USD.LOW24HOUR}}</td>
+      <td>{{value.USD.MKTCAP}}</td>
+     
+    <tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<div class="container"> 
+<div class="row">
+  
+     {%for x in api.Data%}
+      <div  class="col-sm">
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ x.imageurl }}" alt="{{ x.source }}">
+     <div class="card-body">
+      <h5 class="card-title">{{x.title }}</h5>
+      <p class="card-text">{{ x.body|safe|truncatewords:"20"|linebreaks }}
+      </p>
+      <a href="{{ x.url }}" class="btn btn-secondary">Read More</a>
+  
+    </div>
+  </div>
+</div>
+      {% endfor %}
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
