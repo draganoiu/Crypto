@@ -62,3 +62,4 @@ wadllib==1.3.2
 whitenoise==4.1.2
 xkit==0.0.0
 zope.interface==4.3.2
+psycopg2==2.7.2
